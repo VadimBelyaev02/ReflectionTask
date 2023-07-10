@@ -1,13 +1,14 @@
 package com.vadim.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Car {
 
     private String brand;
@@ -16,5 +17,4 @@ public class Car {
     private Wheel[] wheels;
     private String model;
     private double fromOneToOneHundred;
-
 }
