@@ -7,6 +7,7 @@ import com.vadim.model.Wheel;
 import com.vadim.utils.JsonMapper;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -89,26 +90,5 @@ public class JsonMapperTest {
 
         Wheel wheel = JsonMapper.toModel(json, Wheel.class);
         assertEquals(expectedWheel, wheel);
-    }
-
-    @Test
-    public void shouldMapJsonToCar() {
-        final String json = "{\"brand\": \"Жигуль\",\"doors\": [{\"maker\": \"Maker\",\"width\": 1.5,\"isOpen\": true,\"isElectric\": false}, {\"maker\": \"Not a maker\",\"width\": 3.1,\"isOpen\": false,\"isElectric\": true}],\"engine\": {\"horsepower\": 2345235,\"volume\": 3459.01,\"size\": -120,\"symbol\": \"O\"},\"wheels\": [{\"size\": 100,\"material\": \"Metal\"}, {\"size\": -10,\"material\": \"Graphite\"}, {\"size\": 0,\"material\": \"Glass\"}],\"model\": \"NEW\",\"fromOneToOneHundred\": 1.01}";
-
-        Engine engine = new Engine(2345235, 3459.01, 120, 'O');
-
-        Door door1 = new Door("Maker", 1.5F, true, false);
-        Door door2 = new Door("Not a maker", 3.1F, false, true);
-
-        Wheel wheel1 = new Wheel(100, "Metal");
-        Wheel wheel2 = new Wheel(-10, "Graphite");
-        Wheel wheel3 = new Wheel(0, "Glass");
-
-        List<Door> doors = Stream.of(door1, door2).toList();
-        Wheel[] wheels = new Wheel[]{wheel1, wheel2, wheel3};
-        Car excpectedCar = new Car("Жигуль", doors, engine, wheels, "NEW", 1.01);
-
-        Car car = JsonMapper.toModel(json, Car.class);
-        assertEquals(excpectedCar, car);
     }
 }

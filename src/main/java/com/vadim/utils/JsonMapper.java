@@ -90,9 +90,10 @@ public class JsonMapper {
         try {
             object = clazz.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             throw new RuntimeException(e);
         }
+
 
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
