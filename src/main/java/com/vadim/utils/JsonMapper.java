@@ -14,7 +14,6 @@ import static java.lang.reflect.Array.getLength;
 public class JsonMapper {
 
     public static String toJson(Object object) {
-        //  StringBuilder jsonBuilder = new StringBuilder("{\n");
         StringBuilder jsonBuilder = new StringBuilder("{");
 
         Field[] fields = object.getClass().getDeclaredFields();
@@ -27,7 +26,6 @@ public class JsonMapper {
                 jsonBuilder.append("\"").append(field.getName()).append("\": ");
                 addObjectToJsonString(jsonBuilder, field.get(object));
                 if (i != fields.length - 1) {
-                    //     jsonBuilder.append(",\n");
                     jsonBuilder.append(",");
                 }
             }
@@ -35,7 +33,6 @@ public class JsonMapper {
             e.printStackTrace();
         }
         return jsonBuilder.append("}").toString().trim();
-        //   return jsonBuilder.append("\n}").toString();
     }
 
     private static void addObjectToJsonString(StringBuilder jsonBuilder, Object value) {
@@ -117,14 +114,4 @@ public class JsonMapper {
         }
         return object;
     }
-
-    private static Map<String, Object> retrieveFieldsAndValues(String json) {
-        Map<String, Object> map = new HashMap<>();
-        String[] split = json.split(":");
-        for (int i = 0; i < split.length - 1; i += 2) {
-            map.put(split[i], split[i + 1]);
-        }
-        return map;
-    }
-
 }
