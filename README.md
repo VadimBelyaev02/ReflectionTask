@@ -1,3 +1,3 @@
 # ReflectionTask
 
-The task is to map POJO to json and vice versa
+The task is to create a program that maps POJO to json and vice versa
